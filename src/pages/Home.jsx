@@ -309,7 +309,7 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="w-[50%] mx-4">
-                            <p className="2xl:text-xl md:text-lg text-sm text-gray-600">
+                            <p className="2xl:text-xl lg:text-lg text-sm text-gray-600">
                                 Our cutting-edge manufacturing facilities and
                                 advanced warehouse systems span across key
                                 regions of India. Each location is engineered
@@ -376,7 +376,7 @@ export default function Home() {
                             </div>
                         </div>
                         <div className="w-[50%] mx-4">
-                            <p className="2xl:text-xl md:text-lg text-sm text-gray-600">
+                            <p className="2xl:text-xl lg:text-lg text-sm text-gray-600">
                                 At Panorama Export, we believe that success goes
                                 beyond financial progress. It encompasses our
                                 shared responsibility to enable a sustainable
