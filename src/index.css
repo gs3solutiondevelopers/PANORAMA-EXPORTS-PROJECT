@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 .flip-animation {
@@ -18,6 +19,8 @@
     transform: rotateX(0deg);
   }
 }
+=======
+>>>>>>> 12a532232ddea265dd477a75a35a581eea7df7f6
 .fade-enter {
   opacity: 1;
 }
@@ -28,6 +31,7 @@
   .font-headline {
     font-family: 'Playfair Display', 'Times New Roman', serif;
   }
+<<<<<<< HEAD
 
 /* Custom Swiper Styles */
 .swiper-pagination-bullet {
@@ -168,3 +172,5 @@ a, button {
   -webkit-text-fill-color: transparent;
   animation: shimmer 2.5s linear infinite;
 }
+=======
+>>>>>>> 12a532232ddea265dd477a75a35a581eea7df7f6

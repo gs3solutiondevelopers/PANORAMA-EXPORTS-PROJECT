@@ -17,6 +17,10 @@ export default function Landing({ onEnter }) {
         // Show button after 2 seconds (since video is 2x speed)
         const buttonTimer = setTimeout(() => {
             setShowButton(true);
+<<<<<<< HEAD
+=======
+            console.log("Button should appear now");
+>>>>>>> 12a532232ddea265dd477a75a35a581eea7df7f6
         }, 2000);
         
         return () => {
@@ -29,7 +33,11 @@ export default function Landing({ onEnter }) {
     }, []);
 
     const handleVideoPlay = () => {
+<<<<<<< HEAD
         // Video started playing - could add analytics here if needed
+=======
+        console.log("Video started playing");
+>>>>>>> 12a532232ddea265dd477a75a35a581eea7df7f6
     };
 
     const handleTimeUpdate = () => {

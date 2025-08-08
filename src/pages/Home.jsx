@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -420,6 +421,12 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+=======
+export default function Home() {
+    return (
+        <div className="text-center p-4">
+            <h1 className="text-2xl font-bold">Home Page</h1>
+>>>>>>> 12a532232ddea265dd477a75a35a581eea7df7f6
         </div>
     );
 }
