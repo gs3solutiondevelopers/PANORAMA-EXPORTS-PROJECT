@@ -10,6 +10,7 @@ import DynamicText from '../components/DynamicText';
 import craftingTomorrowImage from "../assets/CraftingTomorrow/panorama crafting tomorrow image.jpeg";
 import GlobalFootprintImage from "../assets/GlobalFootprint/global_business.jpg";
 import GlobalMap from "../components/GlobalMap";
+import LiveMap from "../components/LiveMap";
 import plant1 from "../assets/OurInfrastructure/unit_1.jpg";
 import plant2 from "../assets/OurInfrastructure/unit_2.jpg";
 import plant3 from "../assets/OurInfrastructure/unit_3.jpg";
@@ -107,6 +108,8 @@ export default function Home() {
     const units = [
         {
             id: 1,
+            lat: 28.468845,
+            lng: 77.31234,
             title: "Unit 01",
             address:
                 "Plot No 08, DLF Industrial Area Phase – I, Faridabad, Haryana",
@@ -115,6 +118,8 @@ export default function Home() {
         },
         {
             id: 2,
+            lat: 28.539579,
+            lng: 77.289271,
             title: "Unit 02",
             address:
                 "Plot No. 11 DLF Industrial Area– Phase I, Faridabad, Haryana",
@@ -123,6 +128,8 @@ export default function Home() {
         },
         {
             id: 3,
+            lat: 28.468817,
+            lng: 77.304441,
             title: "Unit 03",
             address: "Plot No 67, Sector 27C, Faridabad, Haryana",
             locationUrl: "/indiamap",
@@ -130,6 +137,8 @@ export default function Home() {
         },
         {
             id: 4,
+            lat: 28.6139,
+            lng: 77.209,
             title: "Unit 04",
             address: "Plot No 16/3, Delhi Mathura Road, Faridabad, Haryana",
             locationUrl: "/indiamap",
@@ -338,6 +347,14 @@ export default function Home() {
                             />
                         </div>
                     ))}
+                </div>
+                {/* Google Map section */}
+                <div className="w-[90%] mx-auto px-6 md:px-20">
+                    <LiveMap
+                        locations={units}
+                        center={[29.0588, 76.0856]}
+                        zoom={20}
+                    />
                 </div>
 
                 {/* People section */}
