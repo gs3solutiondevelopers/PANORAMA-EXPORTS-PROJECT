@@ -77,7 +77,7 @@ const MediaScrollSection = () => {
 
     useEffect(() => {
         const id = setInterval(() => {
-            setCurrentIndex((i) => i + 1);
+            setCurrentIndex((i) => (i + 1) % (images.length + 1));
         }, 2000);
         return () => clearInterval(id);
     }, []);

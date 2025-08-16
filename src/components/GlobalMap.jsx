@@ -1,5 +1,81 @@
 import { useEffect, useRef, useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { MdLocationPin } from "react-icons/md";
 import globalMap from "../assets/GlobalFootprint/map.png";
+
+//marker positions in percentages (relative to map div)
+const markers = [
+    { country: "Belgium", brands: ["Farm Rio"], top: "30%", left: "45%" },
+    {
+        country: "US",
+        brands: ["Farm Rio", "Lucky Brand", "Boden", "DKNY", "Baby Moti"],
+        top: "30%",
+        left: "20%",
+    },
+    {
+        country: "UK",
+        brands: [
+            "Farm Rio",
+            "Tesco",
+            "George",
+            "Boden",
+            "TJ Maxx",
+            "Matala",
+            "Boots",
+            "Monsoon",
+            "Redid",
+            "Baby Moti",
+        ],
+        top: "28%",
+        left: "70%",
+    },
+    { country: "Slovakia", brands: ["Tesco"], top: "35%", left: "49%" },
+    {
+        country: "UAE",
+        brands: ["Landmark Group", "Mothercare"],
+        top: "40%",
+        left: "15%",
+    },
+    { country: "KSA", brands: ["Landmark Group"], top: "40%", left: "58%" },
+    { country: "Qatar", brands: ["Landmark Group"], top: "43%", left: "61%" },
+    { country: "Colombia", brands: ["Falabella"], top: "50%", left: "25%" },
+    { country: "Chile", brands: ["Falabella"], top: "65%", left: "25%" },
+    { country: "Peru", brands: ["Falabella"], top: "60%", left: "28%" },
+    { country: "Australia", brands: ["Taking Shape"], top: "75%", left: "80%" },
+    {
+        country: "New Zealand",
+        brands: ["Taking Shape"],
+        top: "85%",
+        left: "92%",
+    },
+    { country: "Singapore", brands: ["Mothercare"], top: "60%", left: "75%" },
+    { country: "Malaysia", brands: ["Mothercare"], top: "50%", left: "70%" },
+    { country: "China", brands: ["Mothercare"], top: "40%", left: "75%" },
+    { country: "Greece", brands: ["Mothercare"], top: "45%", left: "55%" },
+    { country: "Indonesia", brands: ["Mothercare"], top: "65%", left: "77%" },
+    { country: "Spain", brands: ["Mango"], top: "35%", left: "42%" },
+    {
+        country: "Korea",
+        brands: ["Top Ten", "Laughing Child"],
+        top: "35%",
+        left: "80%",
+    },
+    { country: "France", brands: ["Etam"], top: "30%", left: "30%" },
+    {
+        country: "Germany",
+        brands: ["Street One", "Cecil"],
+        top: "35%",
+        left: "25%",
+    },
+    {
+        country: "South Africa",
+        brands: ["Trueworths"],
+        top: "75%",
+        left: "55%",
+    },
+];
 
 export default function GlobalMap() {
     const [countries, setCountries] = useState(0);
@@ -7,6 +83,7 @@ export default function GlobalMap() {
     const sectionRef = useRef(null);
     const observerRef = useRef(null);
 
+    // text animations logic.................
     const animateCounts = () => {
         setCountries(0);
         setOffices(0);
@@ -51,6 +128,13 @@ export default function GlobalMap() {
         };
     }, []);
 
+    // map locations animation logic...............
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.2,
+    });
+
+
     return (
         <div
             ref={sectionRef}
@@ -77,8 +161,40 @@ export default function GlobalMap() {
             </div>
 
             <div
-                className={`bg-[url(${globalMap})] xl:w-[60%] w-[50%] xl:h-[50vh] h-[40vh] bg-contain bg-no-repeat relative z-10 flex flex-col items-center justify-center w-full h-full`}
-            ></div>
+                ref={ref}
+                className={`xl:w-[60%] w-[50%] xl:h-[50vh] h-[40vh] relative z-10 flex flex-col items-center justify-center w-full h-full`}
+            >
+                {/* Background Map */}
+                <img
+                    src={globalMap}
+                    alt="World Map"
+                    className="opacity-60 image-contain image-no-repeat "
+                />
+
+                {/* Location Markers */}
+                {markers.map((marker, index) => (
+                    <motion.div
+                        key={marker.id}
+                        className="absolute text-white group"
+                        style={{ top: marker.top, left: marker.left }}
+                        initial={{ y: 100, opacity: 0 }}
+                        animate={inView ? { y: [100, -25, 0], opacity: 1 } : {}}
+                        transition={{
+                            duration: 0.5,
+                            delay: index * 0.07,
+                            ease: "easeOut",
+                        }}
+                    >
+                        <div className="relative">
+                            <MdLocationPin size={24} className="text-white" />
+                            <div className="absolute z-10 bottom-6 hidden group-hover:block bg-white text-sm text-red-950 px-2 py-1 rounded-lg shadow-md whitespace-nowrap">
+                                <strong>{marker.country}:</strong>{" "}
+                                {marker.brands.join(", ")}
+                            </div>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
         </div>
     );
 }
